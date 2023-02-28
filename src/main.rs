@@ -7,7 +7,7 @@ use zero2prod::telemetry::init_tracing;
 
 #[tokio::main]
 async fn main() -> std::io::Result<()> {
-    init_tracing();
+    init_tracing("zero2prod".into(), "info".into(), std::io::stdout);
 
     let configuration = get_configuration().expect("Failed to read configuration.");
     let pool = PgPool::connect(&configuration.database.connection_string())
